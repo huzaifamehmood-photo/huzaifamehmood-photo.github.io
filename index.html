@@ -358,6 +358,23 @@ footer{
   *,*::after,*::before{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   .card{opacity:1;transform:none}
 }
+/* ===== EDITING SECTION ===== */
+.editing-section{padding:80px 0;}
+.editing-inner{max-width:1200px;margin:0 auto;padding:0 20px;}
+.editing-title{font-size:2rem;margin:0 0 8px;text-align:center;}
+.editing-sub{margin:0 0 40px;text-align:center;opacity:.7;font-size:.95rem;}
+.editing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+@media(max-width:768px){.editing-grid{grid-template-columns:1fr;}}
+
+.ba{position:relative;overflow:hidden;border-radius:10px;user-select:none;line-height:0;background:#111;}
+.ba img{width:100%;display:block;pointer-events:none;}
+.ba-before-wrap{position:absolute;inset:0;width:50%;overflow:hidden;}
+.ba-before-wrap img{position:absolute;top:0;left:0;height:100%;width:auto;max-width:none;}
+.ba-handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;transform:translateX(-1px);pointer-events:none;}
+.ba-handle span{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.4);}
+.ba-handle span::before{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:14px;height:8px;
+  background:linear-gradient(90deg,#333 0 4px,transparent 4px 10px,#333 10px 14px);}
+.ba-range{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;}
 </style>
 </head>
 <body>
@@ -397,7 +414,96 @@ footer{
 <main class="work">
   <div class="grid" id="grid"></div>
 </main>
+<!-- ===== EDITING SECTION ===== -->
+<section id="editing" class="editing-section">
+  <div class="editing-inner">
+    <h2 class="editing-title">Editing</h2>
+    <p class="editing-sub">Drag the handle to compare before and after.</p>
 
+    <div class="editing-grid">
+      <!-- Pair 1 -->
+      <div class="ba" data-ba>
+        <img class="ba-after" src="images/edit-01-after.jpg" alt="After">
+        <div class="ba-before-wrap"><img class="ba-before" src="images/edit-01-before.jpg" alt="Before"></div>
+        <div class="ba-handle"><span></span></div>
+        <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Before after slider">
+      </div>
+
+      <!-- Pair 2 -->
+      <div class="ba" data-ba>
+        <img class="ba-after" src="images/edit-02-after.jpg" alt="After">
+        <div class="ba-before-wrap"><img class="ba-before" src="images/edit-02-before.jpg" alt="Before"></div>
+        <div class="ba-handle"><span></span></div>
+        <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Before after slider">
+      </div>
+
+      <!-- Pair 3 -->
+      <div class="ba" data-ba>
+        <img class="ba-after" src="images/edit-03-after.jpg" alt="After">
+        <div class="ba-before-wrap"><img class="ba-before" src="images/edit-03-before.jpg" alt="Before"></div>
+        <div class="ba-handle"><span></span></div>
+        <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Before after slider">
+      </div>
+
+      <!-- Pair 4 -->
+      <div class="ba" data-ba>
+        <img class="ba-after" src="images/edit-04-after.jpg" alt="After">
+        <div class="ba-before-wrap"><img class="ba-before" src="images/edit-04-before.jpg" alt="Before"></div>
+        <div class="ba-handle"><span></span></div>
+        <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Before after slider">
+      </div>
+
+      <!-- Pair 5 -->
+      <div class="ba" data-ba>
+        <img class="ba-after" src="images/edit-05-after.jpg" alt="After">
+        <div class="ba-before-wrap"><img class="ba-before" src="images/edit-05-before.jpg" alt="Before"></div>
+        <div class="ba-handle"><span></span></div>
+        <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Before after slider">
+      </div>
+
+      <!-- Pair 6 -->
+      <div class="ba" data-ba>
+        <img class="ba-after" src="images/edit-06-after.jpg" alt="After">
+        <div class="ba-before-wrap"><img class="ba-before" src="images/edit-06-before.jpg" alt="Before"></div>
+        <div class="ba-handle"><span></span></div>
+        <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Before after slider">
+      </div>
+
+      <!-- Pair 7 -->
+      <div class="ba" data-ba>
+        <img class="ba-after" src="images/edit-07-after.jpg" alt="After">
+        <div class="ba-before-wrap"><img class="ba-before" src="images/edit-07-before.jpg" alt="Before"></div>
+        <div class="ba-handle"><span></span></div>
+        <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Before after slider">
+      </div>
+
+      <!-- Pair 8 -->
+      <div class="ba" data-ba>
+        <img class="ba-after" src="images/edit-08-after.jpg" alt="After">
+        <div class="ba-before-wrap"><img class="ba-before" src="images/edit-08-before.jpg" alt="Before"></div>
+        <div class="ba-handle"><span></span></div>
+        <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Before after slider">
+      </div>
+
+      <!-- Pair 9 -->
+      <div class="ba" data-ba>
+        <img class="ba-after" src="images/edit-09-after.jpg" alt="After">
+        <div class="ba-before-wrap"><img class="ba-before" src="images/edit-09-before.jpg" alt="Before"></div>
+        <div class="ba-handle"><span></span></div>
+        <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Before after slider">
+      </div>
+
+      <!-- Pair 10 -->
+      <div class="ba" data-ba>
+        <img class="ba-after" src="images/edit-10-after.jpg" alt="After">
+        <div class="ba-before-wrap"><img class="ba-before" src="images/edit-10-before.jpg" alt="Before"></div>
+        <div class="ba-handle"><span></span></div>
+        <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Before after slider">
+      </div>
+    </div>
+  </div>
+</section>
+  
 <!-- ============ CONTACT ============ -->
 <section class="contact" id="contact">
   <p class="section-label">Get in touch</p>
@@ -572,6 +678,23 @@ document.addEventListener("keydown", e => {
 });
 
 render("selected");
+</script>
+<script>
+document.querySelectorAll('[data-ba]').forEach(function(box){
+  var range = box.querySelector('.ba-range');
+  var wrap  = box.querySelector('.ba-before-wrap');
+  var handle= box.querySelector('.ba-handle');
+  function sync(){
+    wrap.style.width = range.value + '%';
+    handle.style.left = range.value + '%';
+    var img = wrap.querySelector('img');
+    if(img) img.style.width = box.offsetWidth + 'px';
+  }
+  range.addEventListener('input', sync);
+  window.addEventListener('resize', sync);
+  box.querySelectorAll('img').forEach(function(i){ i.addEventListener('load', sync); });
+  sync();
+});
 </script>
 </body>
 </html>
