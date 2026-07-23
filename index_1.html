@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sheikh Huzaifa Mehmood — Photography</title>
+<meta name="description" content="Photography portfolio of Sheikh Huzaifa Mehmood. Portraits, visual storytelling, and event work from Lahore, Pakistan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#141210;
+  --ground-2:#1c1917;
+  --ink:#EDE7E0;
+  --ink-dim:#9a9088;
+  --brass:#C08A3E;
+  --ember:#B24A3B;
+  --line:rgba(237,231,224,.13);
+  --display:"Fraunces",Georgia,serif;
+  --body:"Inter Tight",system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--body);
+  font-weight:300;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:0 6vw;
+  overflow:hidden;
+}
+.hero-strip{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  gap:1.2rem;
+  opacity:.22;
+  pointer-events:none;
+  animation:drift 90s linear infinite;
+  will-change:transform;
+}
+.hero-strip img{
+  height:62vh;
+  width:auto;
+  object-fit:cover;
+  flex:0 0 auto;
+  filter:grayscale(.35) contrast(1.05);
+}
+@keyframes drift{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+.hero::after{
+  content:"";
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse at 30% 50%, rgba(20,18,16,.55) 0%, rgba(20,18,16,.92) 55%, var(--ground) 100%);
+  pointer-events:none;
+}
+.hero-inner{position:relative;z-index:2;max-width:1100px}
+.eyebrow{
+  font-size:.72rem;
+  letter-spacing:.34em;
+  text-transform:uppercase;
+  color:var(--brass);
+  margin-bottom:1.6rem;
+  opacity:0;
+  animation:rise .9s .2s forwards cubic-bezier(.2,.7,.3,1);
+}
+.hero h1{
+  font-family:var(--display);
+  font-weight:300;
+  font-size:clamp(2.9rem,9vw,7.5rem);
+  line-height:.95;
+  letter-spacing:-.02em;
+  opacity:0;
+  animation:rise 1s .35s forwards cubic-bezier(.2,.7,.3,1);
+}
+.hero h1 em{
+  font-style:italic;
+  font-weight:400;
+  color:var(--brass);
+}
+.hero-line{
+  margin-top:2rem;
+  max-width:34ch;
+  font-size:clamp(.95rem,1.6vw,1.12rem);
+  line-height:1.7;
+  color:var(--ink-dim);
+  opacity:0;
+  animation:rise 1s .55s forwards cubic-bezier(.2,.7,.3,1);
+}
+@keyframes rise{
+  from{opacity:0;transform:translateY(26px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.scroll-cue{
+  position:absolute;
+  bottom:3rem;left:6vw;
+  z-index:2;
+  font-size:.68rem;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--ink-dim);
+  display:flex;align-items:center;gap:.9rem;
+  opacity:0;
+  animation:rise 1s .8s forwards cubic-bezier(.2,.7,.3,1);
+}
+.scroll-cue span::after{
+  content:"";
+  display:block;
+  width:60px;height:1px;
+  background:var(--ink-dim);
+  transform-origin:left;
+  animation:pull 2.4s ease-in-out infinite;
+}
+@keyframes pull{
+  0%,100%{transform:scaleX(.35);opacity:.4}
+  50%{transform:scaleX(1);opacity:1}
+}
+
+/* ---------- FILTERS ---------- */
+.filters{
+  position:sticky;top:0;z-index:40;
+  background:rgba(20,18,16,.85);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+  padding:1.1rem 6vw;
+  display:flex;
+  gap:.4rem;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+.filters::-webkit-scrollbar{display:none}
+.filters button{
+  background:none;
+  border:1px solid transparent;
+  color:var(--ink-dim);
+  font-family:var(--body);
+  font-size:.78rem;
+  font-weight:400;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  padding:.55rem 1.1rem;
+  border-radius:100px;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:color .25s, border-color .25s, background .25s;
+}
+.filters button:hover{color:var(--ink)}
+.filters button[aria-selected="true"]{
+  color:var(--ground);
+  background:var(--ink);
+  border-color:var(--ink);
+}
+.filters button:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+.count{
+  margin-left:auto;
+  align-self:center;
+  font-size:.7rem;
+  letter-spacing:.2em;
+  color:var(--ink-dim);
+  padding-left:1.5rem;
+  white-space:nowrap;
+}
+
+/* ---------- GRID ---------- */
+.work{padding:4rem 6vw 6rem}
+.grid{
+  columns:3;
+  column-gap:1.1rem;
+}
+@media(max-width:960px){.grid{columns:2}}
+@media(max-width:560px){.grid{columns:1}}
+.card{
+  break-inside:avoid;
+  margin-bottom:1.1rem;
+  position:relative;
+  cursor:zoom-in;
+  overflow:hidden;
+  background:var(--ground-2);
+  opacity:0;
+  transform:translateY(18px);
+  animation:reveal .6s forwards cubic-bezier(.2,.7,.3,1);
+}
+@keyframes reveal{to{opacity:1;transform:none}}
+.card img{
+  width:100%;
+  height:auto;
+  transition:transform .7s cubic-bezier(.2,.7,.3,1), filter .5s;
+}
+.card:hover img{transform:scale(1.04)}
+.card::after{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(20,18,16,.85) 0%, rgba(20,18,16,0) 45%);
+  opacity:0;
+  transition:opacity .4s;
+  pointer-events:none;
+}
+.card:hover::after{opacity:1}
+.card figcaption{
+  position:absolute;
+  left:1.1rem;bottom:1rem;right:1.1rem;
+  z-index:2;
+  opacity:0;
+  transform:translateY(8px);
+  transition:opacity .4s, transform .4s;
+  pointer-events:none;
+}
+.card:hover figcaption{opacity:1;transform:none}
+.cap-title{
+  font-family:var(--display);
+  font-size:1.02rem;
+  font-weight:400;
+  letter-spacing:-.01em;
+}
+.cap-meta{
+  font-size:.68rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--brass);
+  margin-top:.3rem;
+}
+.card:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+
+/* ---------- ABOUT ---------- */
+.about{
+  padding:6rem 6vw 5rem;
+  display:grid;
+  grid-template-columns:1fr 1.4fr;
+  gap:4rem;
+  align-items:start;
+}
+@media(max-width:820px){.about{grid-template-columns:1fr;gap:2rem}}
+.section-label{
+  font-size:.7rem;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color:var(--brass);
+}
+.about p{
+  font-family:var(--display);
+  font-weight:300;
+  font-size:clamp(1.25rem,2.6vw,1.85rem);
+  line-height:1.55;
+  letter-spacing:-.01em;
+}
+.about p + p{margin-top:1.4rem}
+
+/* ---------- CONTACT ---------- */
+.contact{
+  padding:6rem 6vw 7rem;
+  border-top:1px solid var(--line);
+}
+.contact-links{
+  margin-top:1.6rem;
+  display:flex;
+  flex-wrap:wrap;
+  gap:.6rem 3rem;
+}
+.contact-links a{
+  font-family:var(--display);
+  font-size:clamp(1.05rem,2.2vw,1.4rem);
+  font-weight:300;
+  letter-spacing:-.01em;
+  text-decoration:none;
+  width:fit-content;
+  position:relative;
+  transition:color .3s;
+}
+.contact-links a::after{
+  content:"";
+  position:absolute;left:0;bottom:.1em;
+  width:100%;height:1px;
+  background:var(--brass);
+  transform:scaleX(0);
+  transform-origin:right;
+  transition:transform .45s cubic-bezier(.2,.7,.3,1);
+}
+.contact-links a:hover{color:var(--brass)}
+.contact-links a:hover::after{transform:scaleX(1);transform-origin:left}
+footer{
+  padding:2rem 6vw 3rem;
+  border-top:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:1rem;
+  font-size:.72rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-dim);
+}
+
+/* ---------- LIGHTBOX ---------- */
+.lightbox{
+  position:fixed;inset:0;z-index:100;
+  background:rgba(10,9,8,.97);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:4vh 5vw;
+}
+.lightbox.open{display:flex}
+.lightbox img{
+  max-width:100%;
+  max-height:82vh;
+  object-fit:contain;
+  animation:lbin .4s cubic-bezier(.2,.7,.3,1);
+}
+@keyframes lbin{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+.lb-bar{
+  position:absolute;
+  bottom:3vh;left:5vw;right:5vw;
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:1rem;
+  flex-wrap:wrap;
+}
+.lb-title{font-family:var(--display);font-size:1.1rem;font-weight:400}
+.lb-meta{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brass)}
+.lb-count{font-size:.7rem;letter-spacing:.2em;color:var(--ink-dim)}
+.lb-btn{
+  position:absolute;
+  background:none;border:none;
+  color:var(--ink);
+  cursor:pointer;
+  font-family:var(--body);
+  font-size:1.6rem;
+  line-height:1;
+  padding:1rem;
+  opacity:.6;
+  transition:opacity .25s;
+}
+.lb-btn:hover{opacity:1}
+.lb-btn:focus-visible{outline:2px solid var(--brass);outline-offset:2px;opacity:1}
+.lb-close{top:2vh;right:4vw;font-size:1.3rem;letter-spacing:.2em;text-transform:uppercase}
+.lb-prev{left:1vw;top:50%;transform:translateY(-50%)}
+.lb-next{right:1vw;top:50%;transform:translateY(-50%)}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::after,*::before{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .card{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-strip" id="heroStrip" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <p class="eyebrow">Photographer &middot; Lahore, Pakistan</p>
+    <h1>Sheikh Huzaifa<br><em>Mehmood</em></h1>
+    <p class="hero-line">I photograph people in the middle of their own moments. Some of it is quiet and made for nobody, some of it is made for families who wanted the day kept.</p>
+  </div>
+  <div class="scroll-cue"><span></span>Scroll</div>
+</header>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <p class="section-label">About</p>
+  <div>
+    <p>I started with a borrowed camera and a habit of standing at the edge of rooms, watching instead of talking.</p>
+    <p>That habit turned into portraits, into night walks with a tripod, into weddings and convocations where somebody trusted me with a day they only get once.</p>
+    <p>I led the AKS UET Photography Society for a year and spent most of it convincing people that their eye is worth something before their gear is.</p>
+  </div>
+</section>
+
+<!-- ============ FILTERS ============ -->
+<nav class="filters" role="tablist" aria-label="Filter photographs">
+  <button role="tab" aria-selected="true" data-filter="selected">Selected</button>
+  <button role="tab" aria-selected="false" data-filter="personal">Personal</button>
+  <button role="tab" aria-selected="false" data-filter="nikkah">Nikkah</button>
+  <button role="tab" aria-selected="false" data-filter="mehendi">Mehendi</button>
+  <button role="tab" aria-selected="false" data-filter="convocation">Convocation</button>
+  <span class="count" id="count"></span>
+</nav>
+
+<!-- ============ GRID ============ -->
+<main class="work">
+  <div class="grid" id="grid"></div>
+</main>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <p class="section-label">Get in touch</p>
+  <div class="contact-links">
+    <a href="mailto:sheikhhuzaifamehmood@gmail.com">sheikhhuzaifamehmood@gmail.com</a>
+    <a href="tel:+923483700174">0348 3700174</a>
+  </div>
+</section>
+
+<footer>
+  <span>Sheikh Huzaifa Mehmood</span>
+  <span>Lahore, Pakistan</span>
+</footer>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photograph viewer">
+  <button class="lb-btn lb-close" id="lbClose" aria-label="Close viewer">Close</button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous photograph">&#8249;</button>
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Next photograph">&#8250;</button>
+  <img id="lbImg" src="" alt="">
+  <div class="lb-bar">
+    <div>
+      <div class="lb-title" id="lbTitle"></div>
+      <div class="lb-meta" id="lbMeta"></div>
+    </div>
+    <div class="lb-count" id="lbCount"></div>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   PHOTO LIST
+   ---------------------------------------------------------
+   Har entry ka "file" wala naam images/ folder mein
+   bilkul isi naam se honi chahiye.
+   Title aur place apni marzi se badal sakte ho.
+   ========================================================= */
+const PHOTOS = [
+  /* ---------- PERSONAL ---------- */
+  {file:"personal-01.jpg", cat:"personal",     title:"Winter, indoors",        place:"Portrait", pick:true},
+  {file:"personal-02.jpg", cat:"personal",     title:"Green hour",             place:"Lahore"},
+  {file:"personal-03.jpg", cat:"personal",     title:"Lit for the night",      place:"Lahore"},
+  {file:"personal-04.jpg", cat:"personal",     title:"Four skies, one tree",   place:"Composite"},
+  {file:"personal-05.jpg", cat:"personal",     title:"Held gaze",              place:"Portrait", pick:true},
+  {file:"personal-06.jpg", cat:"personal",     title:"Stall of small flags",   place:"Street"},
+  {file:"personal-07.jpg", cat:"personal",     title:"The reply",              place:"Staged"},
+  {file:"personal-08.jpg", cat:"personal",     title:"Two, walking",           place:"Street"},
+
+  /* ---------- NIKKAH ---------- */
+  {file:"nikkah-01.jpg",   cat:"nikkah",       title:"Hands, folded",          place:"Nikkah"},
+  {file:"nikkah-02.jpg",   cat:"nikkah",       title:"What she carried",       place:"Nikkah"},
+  {file:"nikkah-03.jpg",   cat:"nikkah",       title:"Against old stone",      place:"Nikkah", pick:true},
+  {file:"nikkah-04.jpg",   cat:"nikkah",       title:"Given",                  place:"Nikkah"},
+  {file:"nikkah-05.jpg",   cat:"nikkah",       title:"One lamp",               place:"Nikkah"},
+  {file:"nikkah-06.jpg",   cat:"nikkah",       title:"Under the arch",         place:"Nikkah", pick:true},
+
+  /* ---------- MEHENDI ---------- */
+  {file:"mehendi-01.jpg",  cat:"mehendi",      title:"Circle of hands",        place:"Mehendi", pick:true},
+  {file:"mehendi-02.jpg",  cat:"mehendi",      title:"The setup",              place:"Mehendi"},
+  {file:"mehendi-03.jpg",  cat:"mehendi",      title:"Waiting to be worn",     place:"Mehendi"},
+  {file:"mehendi-04.jpg",  cat:"mehendi",      title:"Walking in",             place:"Mehendi"},
+  {file:"mehendi-05.jpg",  cat:"mehendi",      title:"Her mother",             place:"Mehendi"},
+  {file:"mehendi-06.jpg",  cat:"mehendi",      title:"Behind the flowers",     place:"Mehendi", pick:true},
+  {file:"mehendi-07.jpg",  cat:"mehendi",      title:"Family, standing",       place:"Mehendi"},
+
+  /* ---------- CONVOCATION ---------- */
+  {file:"convocation-01.jpg", cat:"convocation", title:"Sleeves and folds",    place:"Convocation"},
+  {file:"convocation-02.jpg", cat:"convocation", title:"On the bench",         place:"Convocation", pick:true},
+  {file:"convocation-03.jpg", cat:"convocation", title:"Flowers, held close",  place:"Convocation"},
+  {file:"convocation-04.jpg", cat:"convocation", title:"Marigold and stripe",  place:"Convocation"},
+  {file:"convocation-05.jpg", cat:"convocation", title:"Put down for a second",place:"Convocation"},
+  {file:"convocation-06.jpg", cat:"convocation", title:"Gold, listening",      place:"Convocation"},
+  {file:"convocation-07.jpg", cat:"convocation", title:"The throw",            place:"Convocation", pick:true},
+  {file:"convocation-08.jpg", cat:"convocation", title:"Reading it again",     place:"Convocation"},
+  {file:"convocation-09.jpg", cat:"convocation", title:"Done",                 place:"Convocation"},
+  {file:"convocation-10.jpg", cat:"convocation", title:"Standing still",       place:"Convocation"}
+];
+
+/* ---------- HERO STRIP ---------- */
+const stripPicks = ["personal-01.jpg","nikkah-03.jpg","mehendi-06.jpg","convocation-07.jpg",
+                    "personal-05.jpg","nikkah-06.jpg","mehendi-01.jpg","convocation-02.jpg"];
+const strip = document.getElementById("heroStrip");
+[...stripPicks, ...stripPicks].forEach(f=>{
+  const i = new Image();
+  i.src = "images/" + f;
+  i.alt = "";
+  i.loading = "lazy";
+  strip.appendChild(i);
+});
+
+/* ---------- GRID ---------- */
+const grid = document.getElementById("grid");
+const countEl = document.getElementById("count");
+let visible = [];
+
+function render(filter){
+  visible = filter === "selected"
+    ? PHOTOS.filter(p => p.pick)
+    : PHOTOS.filter(p => p.cat === filter);
+  grid.innerHTML = "";
+  visible.forEach((p, i) => {
+    const fig = document.createElement("figure");
+    fig.className = "card";
+    fig.tabIndex = 0;
+    fig.setAttribute("role","button");
+    fig.setAttribute("aria-label", "Open " + p.title);
+    fig.style.animationDelay = Math.min(i * 45, 700) + "ms";
+    fig.innerHTML =
+      '<img src="images/' + p.file + '" alt="' + p.title + '" loading="lazy">' +
+      '<figcaption><div class="cap-title">' + p.title + '</div>' +
+      '<div class="cap-meta">' + p.place + '</div></figcaption>';
+    fig.addEventListener("click", () => openLb(i));
+    fig.addEventListener("keydown", e => {
+      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); openLb(i); }
+    });
+    grid.appendChild(fig);
+  });
+  countEl.textContent = visible.length + " photographs";
+}
+
+document.querySelectorAll(".filters button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".filters button")
+      .forEach(b => b.setAttribute("aria-selected", String(b === btn)));
+    render(btn.dataset.filter);
+  });
+});
+
+/* ---------- LIGHTBOX ---------- */
+const lb      = document.getElementById("lightbox");
+const lbImg   = document.getElementById("lbImg");
+const lbTitle = document.getElementById("lbTitle");
+const lbMeta  = document.getElementById("lbMeta");
+const lbCount = document.getElementById("lbCount");
+let idx = 0, lastFocus = null;
+
+function openLb(i){
+  idx = i;
+  lastFocus = document.activeElement;
+  paint();
+  lb.classList.add("open");
+  document.body.style.overflow = "hidden";
+  document.getElementById("lbClose").focus();
+}
+function paint(){
+  const p = visible[idx];
+  lbImg.src = "images/" + p.file;
+  lbImg.alt = p.title;
+  lbTitle.textContent = p.title;
+  lbMeta.textContent = p.place;
+  lbCount.textContent = (idx + 1) + " / " + visible.length;
+}
+function closeLb(){
+  lb.classList.remove("open");
+  document.body.style.overflow = "";
+  if(lastFocus) lastFocus.focus();
+}
+function step(n){
+  idx = (idx + n + visible.length) % visible.length;
+  paint();
+}
+
+document.getElementById("lbClose").addEventListener("click", closeLb);
+document.getElementById("lbPrev").addEventListener("click", () => step(-1));
+document.getElementById("lbNext").addEventListener("click", () => step(1));
+lb.addEventListener("click", e => { if(e.target === lb) closeLb(); });
+document.addEventListener("keydown", e => {
+  if(!lb.classList.contains("open")) return;
+  if(e.key === "Escape")     closeLb();
+  if(e.key === "ArrowLeft")  step(-1);
+  if(e.key === "ArrowRight") step(1);
+});
+
+render("selected");
+</script>
+</body>
+</html>
